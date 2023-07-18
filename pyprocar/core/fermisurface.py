@@ -209,6 +209,8 @@ class FermiSurface:
             for i_band,band_energies in enumerate(bnew):
                 contours = measure.find_contours(band_energies, self.energy)
                 for i_contour,contour in enumerate(contours):
+                    contour[:, 1] = contour[:,1]/interpolation*(ymax-ymin) + ymin  # by DHDL
+                    contour[:, 0] = contour[:,0]/interpolation*(xmax-xmin) + xmin  # by DHDL
                     points = np.array([contour[:, 0], contour[:, 1]]).T.reshape(-1, 1, 2)
                     segments = np.concatenate([points[:-1], points[1:]], axis=1)
                     if mode=='plain':
