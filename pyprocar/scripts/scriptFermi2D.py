@@ -216,6 +216,7 @@ def fermi2D(
         symm.translate(translate)
         symm.general_rotation(rotation[0], rotation[1:])
         # symm.MirrorX()
+        symm.mirror_x() # by DHDL ; apply mirror sym
         symm.rot_symmetry_z(rot_symm)
 
     fs = FermiSurface(symm.kpoints, symm.bands, symm.character, cmap = cmap,  band_indices=band_indices, band_colors=band_colors)
